@@ -1,0 +1,54 @@
+{
+  "consumer": {
+    "name": "HttpConsumer"
+  },
+  "interactions": [
+    {
+      "description": "a request to get study groups",
+      "request": {
+        "method": "GET",
+        "path": "/studyGroups"
+      },
+      "response": {
+        "body": [
+          {
+            "id": 1,
+            "name": "Pharma Bayern"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "12.1.3"
+    },
+    "pactRust": {
+      "ffi": "0.4.12",
+      "models": "1.1.14"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "StudyGroupsAPI"
+  }
+}
