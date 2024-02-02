@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:http:consumer": "jest http/consumer/consumer_contract.spec.js",
+    "test:http:provider": "jest http/provider/provider_contract.spec.js",
     "test:gql:consumer": "jest graphql/consumer/gql_client_contract.spec.js"
   },
   "keywords": [],

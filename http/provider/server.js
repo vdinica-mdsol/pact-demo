@@ -10,6 +10,14 @@ app.get('/studyGroups', (req, res) => {
   res.send(studyGroupsList);
 });
 
+function start(port = 8000) {
+  const server = app.listen(port, () => {
+    console.log(`Http server running on port: ${port}`);
+  });
+
+  return server;
+}
+
 module.exports = {
-  server: app,
+  start,
 };
