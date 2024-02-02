@@ -1,0 +1,65 @@
+{
+  "consumer": {
+    "name": "GraphQLConsumer"
+  },
+  "interactions": [
+    {
+      "description": "a movies request",
+      "request": {
+        "body": {
+          "operationName": "StudyGroupsQuery",
+          "query": "\n          query StudyGroupsQuery {\n            studyGroups {\n              id\n              name\n            }\n          }\n        ",
+          "variables": {}
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body.query": {
+            "match": "regex",
+            "regex": "\\s*query\\s*StudyGroupsQuery\\s*\\{\\s*studyGroups\\s*\\{\\s*id\\s*name\\s*\\}\\s*\\}\\s*"
+          }
+        },
+        "method": "POST",
+        "path": "/graphql"
+      },
+      "response": {
+        "body": {
+          "data": {
+            "studyGroups": [
+              {
+                "id": 1,
+                "name": "Pharma Bayern"
+              }
+            ]
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body.data.studyGroups": {
+            "match": "type",
+            "min": 1
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "12.1.3"
+    },
+    "pactRust": {
+      "ffi": "0.4.12",
+      "models": "1.1.14"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "GraphQLProvider"
+  }
+}
